@@ -31,19 +31,20 @@ class Player:
         self.special = 2
 
     def attack(self, target):
-        damage = random.randint(self.strength, self.strength + 10)
+        damage = random.randint(self.strength, self.strength + 5)
         """
         Critical Chance
         """
-        if random.randint(1,10) > self.agility / 2:
+        if random.randint(1,10) > int(self.agility / 3):
             damage = damage * 2 
-        print(f"{self.name} deal {damage} damage to {target}!")
+            print(f"{self.name} deal {damage} CRITICAL damage to {target}!")
+        else:
+         print(f"{self.name} deal {damage} damage to {target}!")
+        
         return damage
 
     def take_damage(self, damage):
         self.health -= damage
-        if self.health <= 0:
-            print(f"{self.name} has been defeated!")
 
     def add_experience(self, value):
         print(f"Experience gained: {value}")
@@ -58,6 +59,6 @@ class Player:
             self.health = self.endurence * 20
             self.strength += 1
     
-    def __str__(self):
-        return f"{self.name}: (Health: {self.health}) (LvL: {self.level})"
+    #def __str__(self):
+    #    return f"{self.name}: (Health: {self.health}) (LvL: {self.level})"
     

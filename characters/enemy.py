@@ -20,8 +20,3 @@ class Enemy:
 
     def take_damage(self, damage):
         self.health -= damage
-        if self.health <= 0:
-            print(f"{self.name} has been defeated!")
-
-    def __str__(self):
-        return f"{self.name} (Health: {self.health})"
