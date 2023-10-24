@@ -18,7 +18,6 @@ class Player:
         """
         Depending of the build, this will be our stats:
         """
-        self.health = 5 * 20
         self.strength = 5
         self.perception = 5
         self.endurence = 5
@@ -29,13 +28,14 @@ class Player:
         self.level = 1
         self.experience = 0
         self.special = 2
+        self.health = self.endurence * 20
 
     def attack(self, target):
         damage = random.randint(self.strength, self.strength + 5)
         """
         Critical Chance
         """
-        if random.randint(1,10) > int(self.agility / 3):
+        if random.randint(1,10) < int(self.luck / 3):
             damage = damage * 2 
             print(f"{self.name} deal {damage} CRITICAL damage to {target}!")
         else:
@@ -45,6 +45,7 @@ class Player:
 
     def take_damage(self, damage):
         self.health -= damage
+        print(f"Current HP: {self.health}")
 
     def add_experience(self, value):
         print(f"Experience gained: {value}")
@@ -52,7 +53,7 @@ class Player:
         """
         Hero level up
         """
-        if self.experience > self.level * 150:
+        if self.experience > self.level * 300:
             print(f"¡{self.name} level up!")
             self.level += 1
             self.endurence += 1

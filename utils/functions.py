@@ -23,7 +23,7 @@ OPEN.AI
 EMBEDDING_MODEL = "text-embedding-ada-002"
 GPT_MODEL = "gpt-3.5-turbo"
 
-openai.api_key = ""
+openai.api_key = "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"
 
 def api_openai(question):
 
