@@ -27,7 +27,7 @@ class Player:
         self.luck = 5
         self.level = 1
         self.experience = 0
-        self.special = 2
+        self.gold = 0
         self.health = self.endurence * 20
 
     def attack(self, target):
@@ -42,6 +42,10 @@ class Player:
          print(f"{self.name} deal {damage} damage to {target}!")
         
         return damage
+    
+    def iniciative(self):
+        iniciative = self.agility + random.randint(1 , 8)
+        return iniciative
 
     def take_damage(self, damage):
         self.health -= damage

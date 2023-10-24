@@ -1,11 +1,10 @@
 from characters.player import Player
 from characters.enemy import Enemy
-from characters.boss import Boss
 from scenes.scene import random_location
 from utils.functions import api_openai
 
-def new_enemy(type, player):
-    enemy = Enemy(type, location, player.level)
+def new_enemy(type_enemy, player):
+    enemy = Enemy(type_enemy, location, player.level)
     return enemy
 
 def is_alive(entity):
@@ -22,6 +21,7 @@ def battle(player, enemy):
         if not is_alive(enemy):
             print("Enemy killed")
             player.add_experience(enemy.experience)
+            player.gold += enemy.gold
             enemy = new_enemy("Normal", player)
             return True
 
@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     while True:
 
-        if player.level == 10:
+        if player.level < 10:
             if not battle(player,enemy):
                 break
             else:
