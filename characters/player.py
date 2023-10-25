@@ -18,7 +18,6 @@ class Player:
         """
         Depending of the build, this will be our stats:
         """
-        self.health = 5 * 20
         self.strength = 5
         self.perception = 5
         self.endurence = 5
@@ -28,22 +27,29 @@ class Player:
         self.luck = 5
         self.level = 1
         self.experience = 0
-        self.special = 2
+        self.gold = 0
+        self.health = self.endurence * 20
 
     def attack(self, target):
-        damage = random.randint(self.strength, self.strength + 10)
+        damage = random.randint(self.strength, self.strength + 5)
         """
         Critical Chance
         """
-        if random.randint(1,10) > self.agility / 2:
+        if random.randint(1,10) < int(self.luck / 3):
             damage = damage * 2 
-        print(f"{self.name} deal {damage} damage to {target}!")
+            print(f"{self.name} deal {damage} CRITICAL damage to {target}!")
+        else:
+         print(f"{self.name} deal {damage} damage to {target}!")
+        
         return damage
+    
+    def iniciative(self):
+        iniciative = self.agility + random.randint(1 , 8)
+        return iniciative
 
     def take_damage(self, damage):
         self.health -= damage
-        if self.health <= 0:
-            print(f"{self.name} has been defeated!")
+        print(f"Current HP: {self.health}")
 
     def add_experience(self, value):
         print(f"Experience gained: {value}")
@@ -51,13 +57,13 @@ class Player:
         """
         Hero level up
         """
-        if self.experience > self.level * 150:
+        if self.experience > self.level * 300:
             print(f"¡{self.name} level up!")
             self.level += 1
             self.endurence += 1
             self.health = self.endurence * 20
             self.strength += 1
     
-    def __str__(self):
-        return f"{self.name}: (Health: {self.health}) (LvL: {self.level})"
+    #def __str__(self):
+    #    return f"{self.name}: (Health: {self.health}) (LvL: {self.level})"
     

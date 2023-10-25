@@ -11,7 +11,6 @@ game/
 |   |-- __init__.py
 |   |-- player.py
 |   |-- enemy.py
-|   |-- boss.py
 |   |-- companion.py
 |-- scenes/
 |   |-- __init__.py

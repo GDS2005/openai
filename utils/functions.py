@@ -1,5 +1,6 @@
 import pyttsx3
 import openai  # for calling the OpenAI API
+from decouple import config
 
 """
 TEXT TO SPEECH
@@ -23,7 +24,7 @@ OPEN.AI
 EMBEDDING_MODEL = "text-embedding-ada-002"
 GPT_MODEL = "gpt-3.5-turbo"
 
-openai.api_key = ""
+openai.api_key = config('GPT_API_KEY')
 
 def api_openai(question):
 
@@ -39,4 +40,4 @@ def api_openai(question):
     )
 
     print("Narrador> ",response['choices'][0]['message']['content'])
-    speak(response['choices'][0]['message']['content'])
+    #speak(response['choices'][0]['message']['content'])
