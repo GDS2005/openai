@@ -43,11 +43,13 @@ if __name__ == "__main__":
     boss = new_enemy("Boss", player)
     kill_count = 0
 
+    api_openai("Haz una introducción en base al siguiente concepto de un juego de rol:"
+            " Ahora, el {} {}, se enfrentará a nuevos desafios en {}, donde deberá enfrentarse a {} "
+            "que controla el lugar.".format(player.build, player.name, location, boss.name))
+
     print(f"You found a new Enemy: {enemy.name}")
 
-
     while True:
-
         if player.level < 10:
             if not battle(player,enemy):
                 break
@@ -62,5 +64,3 @@ if __name__ == "__main__":
                 location = random_location()
                 enemy = new_enemy("Normal", player)
                 boss = new_enemy("Boss", player)
-
-                

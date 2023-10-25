@@ -1,3 +1,2 @@
-characters\__pycache__
-escenes\__pycache__
-utils\__pycache__
+__pycache__
+.env
